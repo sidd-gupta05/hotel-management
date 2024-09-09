@@ -294,15 +294,13 @@
                                 </div>
                             </li>
                             
-
-                            <li>
-                                <label>Passport Number</label>
-                                <span> *</span>
+                            <li id="idField">
+                                <label>Id no.</label>
+                                <span>*</span>
                                 <div>
-                                    <input type="text" placeholder="A11163131" required>
+                                    <input type="text" id="idNumber" placeholder="A11163131">
                                 </div>
                             </li>
-                            <br>
 
                             <li>
                                 <label>Special Request [ Optional ]</label>
@@ -340,37 +338,59 @@
         </footer>
         <!-- FOOTER END -->
         <script>
-           document.getElementById('book_reservation').addEventListener('submit', function(event) {
-    event.preventDefault(); 
-    
-    const formData = {
-        firstname: document.getElementById('firstname').value,
-        lastname: document.getElementById('lastname').value,
-        email: document.getElementById('email').value,
-        room: document.getElementById('room').value,
-        guest: document.getElementById('guest').value,
-        children: document.getElementById('children').value,
-        day: document.getElementById('day').value,
-        month: document.getElementById('month').value,
-        year: document.getElementById('year').value,
-        hour: document.getElementById('hour').value,
-        timePeriod: document.getElementById('timePeriod').value,
-        departure_day: document.getElementById('departure_day').value,
-        departure_month: document.getElementById('departure_month').value,
-        departure_year: document.getElementById('departure_year').value,
-        departure_hour: document.getElementById('departure_hour').value,
-        timeperiodDeparture: document.getElementById('timeperiodDeparture').value,
-        freePickUp: document.getElementById('freePickUp').value,
-        membership: document.querySelector('input[name="membership"]:checked') ? document.querySelector('input[name="membership"]:checked').value : '',
-        passportNumber: document.querySelector('input[placeholder="A11163131"]').value,
-        specialRequest: document.querySelector('.form-textarea').value
-    };
+            const yesRadio = document.getElementById('yes');
+    const noRadio = document.getElementById('no');
+    const idField = document.getElementById('idField');
+    const idNumberInput = document.getElementById('idNumber');
 
-    console.log('Form Data:', formData);
+    idField.style.display = 'none'; 
 
-    alert('Data stored successfully!');
-});
+    yesRadio.addEventListener('change', function () {
+        if (this.checked) {
+            idField.style.display = 'block';
+            idNumberInput.setAttribute('required', 'required');
+        }
+    });
 
+    noRadio.addEventListener('change', function () {
+        if (this.checked) {
+            idField.style.display = 'none';
+            idNumberInput.removeAttribute('required');
+            idNumberInput.value = '';
+        }
+    });
+
+    document.getElementById('book_reservation').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+        const formData = {
+            firstname: document.getElementById('firstname').value,
+            lastname: document.getElementById('lastname').value,
+            email: document.getElementById('email').value,
+            room: document.getElementById('room').value,
+            guest: document.getElementById('guest').value,
+            children: document.getElementById('children').value,
+            day: document.getElementById('day').value,
+            month: document.getElementById('month').value,
+            year: document.getElementById('year').value,
+            hour: document.getElementById('hour').value,
+            timePeriod: document.getElementById('timePeriod').value,
+            departure_day: document.getElementById('departure_day').value,
+            departure_month: document.getElementById('departure_month').value,
+            departure_year: document.getElementById('departure_year').value,
+            departure_hour: document.getElementById('departure_hour').value,
+            timeperiodDeparture: document.getElementById('timeperiodDeparture').value,
+            freePickUp: document.getElementById('freePickUp').value,
+            membership: document.querySelector('input[name="membership"]:checked') ? document.querySelector('input[name="membership"]:checked').value : '',
+            passportNumber: idNumberInput.value, 
+            specialRequest: document.querySelector('.form-textarea').value
+        };
+
+        console.log('Form Data:', formData);
+
+
+        alert('Data stored successfully!');
+    });
         </script>
     </div>
 </body>
