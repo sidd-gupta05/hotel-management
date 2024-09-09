@@ -5,114 +5,6 @@
     <title>Book Now</title>
     <link rel="stylesheet" href="../css/booknow.css">
     <link rel="stylesheet" href="../css/links/style-Arrangement.css">
-
-    <script>
-        // Validate my form
-        function validateForm() {
-            //checking the firstname
-            validateName('firstname');
-
-            //checking the lastname
-            validateName('lastname');
-
-            //check email
-            validateEmailAddress('email');
-
-            //check room
-            validateSelect('room');
-
-            //check guest
-            validateSelect('guest');
-
-            //check children
-            validateSelect('children');
-
-            /* Arrival validation */
-            validateSelect('day');
-            validateSelect('month');
-            validateSelect('year');
-            validateSelect('hour');
-            validateSelect('timePeriod');
-
-            /* Departure validation */
-            validateSelect('departure_day');
-            validateSelect('departure_month');
-            validateSelect('departure_year');
-            validateSelect('departure_hour');
-            validateSelect('timeperiodDeparture');
-
-
-            //check free pickup
-            validateSelect('freePickUp');
-
-            //check passport number
-            validatePassportNumber('freePickUp');
-        }
-
-        // validate my email
-        function validateEmailAddress(email) {
-            //check email
-            var email = document.getElementById(email);
-            if (email.value === "") {
-                alert("Your Email Address must be filled out");
-                return false;
-            } else {
-                //validate email
-                var regExpEmail =
-                    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                if (!regExpEmail.test(email.value)) {
-                    alert("Email is not in correct format");
-                    email.focus();
-                    return false;
-                }
-            }
-        }
-
-        // validate the input name
-        function validateName(targetId) {
-            //checking the firstname
-            var name = document.getElementById(targetId);
-            var regExpFirstName = /^[A-Z][a-z]+$/;
-            if (name.value === "") {
-                alert(targetId+" must be filled out");
-                return false;
-            } else {
-                if (!regExpFirstName.test(name.value)) {
-                    alert("Please enter "+targetId+" in correct format");
-                    name.focus();
-                    return false;
-                }
-            }
-        }
-
-        // validate the room
-        function validateSelect(select) {
-            //check if the city was selected
-            var dropdown = document.getElementById(select);
-            if (dropdown.value === "-1") {
-                alert("Please select any options from "+select);
-                return false;
-            }
-        }
-
-        // validate passport number
-        function validatePassportNumber(number) {
-            var passportNo = document.getElementById(targetId);
-            var regExPassportNumber = /^(?!^0+$)[a-zA-Z0-9]{3,20}$/;
-
-            if (passportNo.value === "") {
-                alert("Passport Number must be filled out");
-                return false;
-            } else {
-                if (!regExPassportNumber.test(passportNo.value)) {
-                    alert("Please enter passport number in correct format");
-                    passportNo.focus();
-                    return false;
-                }
-            }
-        }
-
-    </script>
 </head>
 <body>
 
@@ -122,18 +14,18 @@
         <header class="header">
 
             <a name="home"></a>
-            <div class="navigation-bar">
-                <div class="navigation-container">
-                    <a href="../index.html"><img class="navigation-logo" style="width: 230px; height: 50px; margin-right: 850px;" src="img/Andra logo.jpeg" alt="Andra Hotel Booking"></a>
-
-                    <ul class="navigation">
-                        <li><a href="../index.html">HOME</a></li>
-                        <li><a href="../html/room.html">ROOMS AND SUITES</a></li>
-                        <li><a href="../html/contact.html">CONTACT US</a></li>
-                        <li><a href="../html/about.html">ABOUT</a></li>
-                        <li><a href="../html/booknow.html">BOOK ONLINE</a></li>
-                    </ul>
+            <div class="navigation-container">
+                <div class="logo-container">
+                    <img class="navigation-logo" src="https://th.bing.com/th?id=OLC.QBBzz/J+VRD4kA480x360&rs=1&pid=ImgDetMain" alt="">
+                    <div class="nav-text">Andra Mahasabha</div>
                 </div>
+                <ul class="navigation">
+                    <li><a class="bs" href="#home">HOME</a></li>
+                    <li><a class="bs" href="room.html">ROOMS AND SUITES</a></li>
+                    <li><a class="bs" href="contact.html">CONTACT US</a></li>
+                    <li><a class="bs" href="about.html">ABOUT</a></li>
+                    <li><a class="bs" href="booknow.html">BOOK ONLINE</a></li>
+                </ul>
             </div>
 
         </header>
@@ -146,7 +38,7 @@
                             <!-- HEADER -->
                             <br>
                             <li>
-                                <h1 class="form-header" style="color: #3e61a0">
+                                <h1 class="form-header" style="color: black">
                                     Hotel Booking
                                 </h1>
                             </li>
@@ -265,7 +157,7 @@
                                     <select aria-label="Year" id="year" title="Year"
                                             autocomplete="on" required>
                                         <option value="-1" selected disabled="">Year</option><option
-                                            value="2018">2018</option>
+                                            value="2024">2024</option><option value="2025">2025</option>
                                     </select>
                                 </span>
 
@@ -339,7 +231,7 @@
                                     <select aria-label="Year" id="departure_year" title="Year"
                                             autocomplete="on" required>
                                         <option value="-1" selected disabled="">Year</option><option
-                                            value="2018">2018</option>
+                                            value="2024">2024</option><option value="2025">2025</option>
                                     </select>
                                 </span>
 
@@ -391,6 +283,19 @@
                             <br>
 
                             <li>
+                                <label>Member of Andra Mahasabha</label>
+                                <span>*</span>
+                                <div class="radio-group">
+                                    <input type="radio" id="yes" name="membership" value="yes" required>
+                                    <label for="yes">Yes</label>
+                            
+                                    <input type="radio" id="no" name="membership" value="no" required>
+                                    <label for="no">No</label>
+                                </div>
+                            </li>
+                            
+
+                            <li>
                                 <label>Passport Number</label>
                                 <span> *</span>
                                 <div>
@@ -408,25 +313,13 @@
                             <br>
 
                             <li>
-                                <button style="font-size: 15pt; border-color: #3e61a0">Submit</button>
+                                <button style="font-size: 15pt; border-color: #3e61a0" class="send">Submit</button>
                             </li>
-                            <br><br>
                         </ul>
                     </div>
                 </form>
             </div>
         </article>
-
-
-        <!-- LEFT BEGINNING -->
-        <aside class="aside aside-1" style="color: #FFFFFF">.</aside>
-        <!-- LEFT END
-
-        <!-- LEFT BEGINNING -->
-        <aside class="aside aside-2" style="color: #FFFFFF">.</aside>
-        <!-- LEFT END -->
-
-
         <!-- FOOTER BEGINNING -->
         <footer class="footer">
 
@@ -446,6 +339,39 @@
 
         </footer>
         <!-- FOOTER END -->
+        <script>
+           document.getElementById('book_reservation').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    
+    const formData = {
+        firstname: document.getElementById('firstname').value,
+        lastname: document.getElementById('lastname').value,
+        email: document.getElementById('email').value,
+        room: document.getElementById('room').value,
+        guest: document.getElementById('guest').value,
+        children: document.getElementById('children').value,
+        day: document.getElementById('day').value,
+        month: document.getElementById('month').value,
+        year: document.getElementById('year').value,
+        hour: document.getElementById('hour').value,
+        timePeriod: document.getElementById('timePeriod').value,
+        departure_day: document.getElementById('departure_day').value,
+        departure_month: document.getElementById('departure_month').value,
+        departure_year: document.getElementById('departure_year').value,
+        departure_hour: document.getElementById('departure_hour').value,
+        timeperiodDeparture: document.getElementById('timeperiodDeparture').value,
+        freePickUp: document.getElementById('freePickUp').value,
+        membership: document.querySelector('input[name="membership"]:checked') ? document.querySelector('input[name="membership"]:checked').value : '',
+        passportNumber: document.querySelector('input[placeholder="A11163131"]').value,
+        specialRequest: document.querySelector('.form-textarea').value
+    };
+
+    console.log('Form Data:', formData);
+
+    alert('Data stored successfully!');
+});
+
+        </script>
     </div>
 </body>
 </html>
